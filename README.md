@@ -25,7 +25,7 @@ In order to use this library, please ensure that you have the following:
 The easiest way to get up and running is to install the library using the npm dependency manager. Run the following command in your console:
 
 ```bash
-npm install pushradar --save
+$ npm install pushradar --save
 ```
 
 ## Broadcasting Messages
