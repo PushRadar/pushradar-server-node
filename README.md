@@ -3,7 +3,7 @@
 <p align="center">
     <a href="https://www.npmjs.com/package/pushradar"><img alt="npm" src="https://img.shields.io/npm/v/pushradar?cacheSeconds=60"></a> 
     <a href="https://www.npmjs.com/package/pushradar"><img alt="npm" src="https://img.shields.io/npm/dt/pushradar?cacheSeconds=60"></a>
-    <a href="https://packagist.org/packages/pushradar/pushradar-server-php"><img src="https://poser.pugx.org/pushradar/pushradar-server-php/license.svg?cacheSeconds=60" alt="License"></a> 
+    <img alt="NPM" src="https://img.shields.io/npm/l/pushradar">    
 </p>
 <br />
 
