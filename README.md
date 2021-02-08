@@ -1,4 +1,5 @@
 <p align="center"><a href="https://pushradar.com" target="_blank"><img src="https://pushradar.com/images/logo/pushradar-logo-dark.svg" width="300"></a></p>
+<br />
 
 ## PushRadar Node.js Server Library
 
