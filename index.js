@@ -64,14 +64,16 @@ function PushRadar(secretKey) {
                 channel: channelNameInner.trim(),
                 data: dataInner
             }, (err, response) => {
-                if (err) {
-                    return callbackInner(err, JSON.parse(err.response.body));
-                }
+                if (typeof callbackInner !== 'undefined') {
+                    if (err) {
+                        return callbackInner(err, JSON.parse(err.response.body));
+                    }
 
-                if (response.status === 200) {
-                    return callbackInner(null, JSON.parse(response.body));
-                } else {
-                    return callbackInner(err, JSON.parse(err.response.body));
+                    if (response.status === 200) {
+                        return callbackInner(null, JSON.parse(response.body));
+                    } else {
+                        return callbackInner(err, JSON.parse(err.response.body));
+                    }
                 }
             });
         })(channelName, data, callback);
