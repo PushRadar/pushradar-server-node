@@ -1,9 +1,9 @@
 <p align="center"><a href="https://pushradar.com" target="_blank"><img src="https://pushradar.com/images/logo/pushradar-logo-dark.svg" width="300"></a></p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/pushradar"><img alt="npm" src="https://img.shields.io/npm/v/pushradar?cacheSeconds=60"></a> 
-    <a href="https://www.npmjs.com/package/pushradar"><img alt="npm" src="https://img.shields.io/npm/dt/pushradar?cacheSeconds=60"></a>
-    <img alt="NPM" src="https://img.shields.io/npm/l/pushradar">    
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/v/pushradar?cacheSeconds=60&color=5b86e5"></a> 
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/dt/pushradar?cacheSeconds=60&color=5b86e5"></a>
+    <img src="https://img.shields.io/npm/l/pushradar?cacheSeconds=60&color=5b86e5">
 </p>
 <br />
 
