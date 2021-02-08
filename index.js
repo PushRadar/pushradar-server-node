@@ -1,7 +1,7 @@
 const got = require('got');
 
 function PushRadar(secretKey) {
-    this.version = '3.0.0-alpha.1';
+    this.version = '3.0.0-alpha.2';
     this.apiEndpoint = 'https://api.pushradar.com/v3';
 
     this._validateChannelName = (channelName) => {
