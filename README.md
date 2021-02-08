@@ -3,7 +3,7 @@
 <p align="center">
     <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/v/pushradar?cacheSeconds=60&color=5b86e5"></a> 
     <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/dt/pushradar?cacheSeconds=60&color=5b86e5"></a>
-    <img src="https://img.shields.io/npm/l/pushradar?cacheSeconds=60&color=5b86e5">
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/l/pushradar?cacheSeconds=60&color=5b86e5"></a>
 </p>
 <br />
 
