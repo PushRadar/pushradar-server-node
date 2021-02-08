@@ -1,0 +1,25 @@
+{
+  "name": "pushradar",
+  "version": "3.0.0-alpha.1",
+  "description": "PushRadar's official Node.js server library.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pushradar/pushradar-server-node"
+  },
+  "keywords": [
+    "pushradar",
+    "realtime",
+    "real-time",
+    "real time",
+    "websockets",
+    "channels",
+    "publish",
+    "messages"
+  ],
+  "author": "PushRadar <contact@pushradar.com> (https://pushradar.com)",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.8.1"
+  }
+}
