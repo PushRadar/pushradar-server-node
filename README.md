@@ -54,6 +54,8 @@ Private channels require authentication and start with the prefix **private-**. 
 You will need to set up an authentication endpoint that returns a token using the `auth(...)` method if the user is allowed to subscribe to the channel. For example:
 
 ```javascript
+const radar = require("pushradar")("your-secret-key");
+const channelName = request.query.channelName;
 if (/* is user allowed to access channel? */ true) {
     radar.auth(channelName, (err, authResponse) => {
         if (!err) {
