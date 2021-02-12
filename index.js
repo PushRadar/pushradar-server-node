@@ -44,20 +44,16 @@ function PushRadar(secretKey) {
         ((channelNameInner, socketIDInner, callbackInner) => {
             this._doHTTPRequest('GET', this.apiEndpoint + "/channels/auth?channel=" + encodeURIComponent(channelNameInner.trim()) +
                 "&socketID=" + encodeURIComponent(socketIDInner.trim()), {}, (err, response) => {
-                if (err) {
-                    return callbackInner(err, JSON.parse(err.response.body));
+                if (err || response.status !== 200) {
+                    return callbackInner(err, 'There was a problem receiving a channel authentication token. Server returned: ' + err.response.body);
                 }
 
-                if (response.status === 200) {
-                    return callbackInner(null, JSON.parse(response.body));
-                } else {
-                    return callbackInner(err, JSON.parse(err.response.body));
-                }
+                return callbackInner(null, JSON.parse(response.body));
             });
         })(channelName, socketID, callback);
     }
 
-    this.broadcast = (channelName, data, callback) => {
+    this.broadcast = (channelName, data,  callback = undefined) => {
         if (channelName.trim() === '') {
             throw new Error('Channel name empty. Please provide a channel name.');
         }
@@ -70,15 +66,11 @@ function PushRadar(secretKey) {
                 data: dataInner
             }, (err, response) => {
                 if (typeof callbackInner !== 'undefined') {
-                    if (err) {
-                        return callbackInner(err, JSON.parse(err.response.body));
+                    if (err || response.status !== 200) {
+                        return callbackInner(err, 'An error occurred while calling the API. Server returned: ' + err.response.body);
                     }
 
-                    if (response.status === 200) {
-                        return callbackInner(null, JSON.parse(response.body));
-                    } else {
-                        return callbackInner(err, JSON.parse(err.response.body));
-                    }
+                    return callbackInner(null, true);
                 }
             });
         })(channelName, data, callback);
