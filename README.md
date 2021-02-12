@@ -56,8 +56,9 @@ You will need to set up an authentication endpoint that returns a token using th
 ```javascript
 const radar = require("pushradar")("your-secret-key");
 const channelName = request.query.channelName;
+const socketID = request.query.socketID;
 if (/* is user allowed to access channel? */ true) {
-    radar.auth(channelName, (err, authResponse) => {
+    radar.auth(channelName, socketID, (err, authResponse) => {
         if (!err) {
             response.send({token: authResponse.token});
         } else {
@@ -79,5 +80,5 @@ Complete documentation for PushRadar's Node.js server library can be found at: <
 
 ## License
 
-Copyright 2021, PushRadar. PushRadar's Node.js server library is licensed under the MIT license:
-http://www.opensource.org/licenses/mit-license.php
+Copyright © 2021, PushRadar. PushRadar's Node.js server library is licensed under the MIT license:
+<https://opensource.org/licenses/mit-license.php>

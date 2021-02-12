@@ -28,7 +28,7 @@ function PushRadar(secretKey) {
         });
     }
 
-    this.auth = (channelName, callback) => {
+    this.auth = (channelName, socketID, callback) => {
         if (channelName.trim() === '') {
             throw new Error('Channel name empty. Please provide a channel name.');
         }
@@ -37,8 +37,13 @@ function PushRadar(secretKey) {
             throw new Error('Channel authentication can only be used with private channels.');
         }
 
-        ((channelNameInner, callbackInner) => {
-            this._doHTTPRequest('GET', this.apiEndpoint + "/channels/auth?channel=" + encodeURIComponent(channelNameInner.trim()), {}, (err, response) => {
+        if (socketID.trim() === '') {
+            throw new Error('Socket ID empty. Please pass through a socket ID.');
+        }
+
+        ((channelNameInner, socketIDInner, callbackInner) => {
+            this._doHTTPRequest('GET', this.apiEndpoint + "/channels/auth?channel=" + encodeURIComponent(channelNameInner.trim()) +
+                "&socketID=" + encodeURIComponent(socketIDInner.trim()), {}, (err, response) => {
                 if (err) {
                     return callbackInner(err, JSON.parse(err.response.body));
                 }
@@ -49,7 +54,7 @@ function PushRadar(secretKey) {
                     return callbackInner(err, JSON.parse(err.response.body));
                 }
             });
-        })(channelName, callback);
+        })(channelName, socketID, callback);
     }
 
     this.broadcast = (channelName, data, callback) => {

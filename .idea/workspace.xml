@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b59f2ae-4b18-40ed-9585-adab91513762" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1oAZJTLuGD3SlOvMJoonHfaHVq4" />
   <component name="ProjectViewState">
@@ -62,7 +73,12 @@
       <workItem from="1612817106338" duration="1000" />
       <workItem from="1612820557633" duration="75000" />
       <workItem from="1612831332149" duration="1543000" />
-      <workItem from="1612908128874" duration="155000" />
+      <workItem from="1612908128874" duration="2143000" />
+      <workItem from="1613098971481" duration="882000" />
+      <workItem from="1613100584261" duration="4000" />
+      <workItem from="1613101311050" duration="6000" />
+      <workItem from="1613102621956" duration="431000" />
+      <workItem from="1613153856119" duration="2579000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 ## 3.0.0-alpha.2 (2021-02-08)
 
 [FIXED] Intermediate bug fixes and stability improvements
+[CHANGED] Made channel authentication more secure
 
 ## 3.0.0-alpha.1 (2021-02-07)
 
