@@ -63,7 +63,7 @@ function PushRadar(secretKey) {
         ((channelNameInner, dataInner, callbackInner) => {
             this._doHTTPRequest('POST', this.apiEndpoint + "/broadcasts", {
                 channel: channelNameInner.trim(),
-                data: dataInner
+                data: JSON.stringify(dataInner)
             }, (err, response) => {
                 if (typeof callbackInner !== 'undefined') {
                     if (err || response.status !== 200) {
