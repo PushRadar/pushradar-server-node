@@ -1,7 +1,7 @@
 const got = require('got');
 
 function PushRadar(secretKey) {
-    this.version = '3.0.0-alpha.1';
+    this.version = '3.0.0';
     this.apiEndpoint = 'https://api.pushradar.com/v3';
 
     this._validateChannelName = (channelName) => {
@@ -28,7 +28,11 @@ function PushRadar(secretKey) {
         });
     }
 
-    this.auth = (channelName, callback) => {
+    this.auth = (channelName, socketID, callback) => {
+        if (typeof channelName !== 'string') {
+            throw new Error('Channel name must be a string.');
+        }
+
         if (channelName.trim() === '') {
             throw new Error('Channel name empty. Please provide a channel name.');
         }
@@ -37,22 +41,31 @@ function PushRadar(secretKey) {
             throw new Error('Channel authentication can only be used with private channels.');
         }
 
-        ((channelNameInner, callbackInner) => {
-            this._doHTTPRequest('GET', this.apiEndpoint + "/channels/auth?channel=" + encodeURIComponent(channelNameInner.trim()), {}, (err, response) => {
-                if (err) {
-                    return callbackInner(err, JSON.parse(err.response.body));
+        if (typeof socketID !== 'string') {
+            throw new Error('Socket ID must be a string.');
+        }
+
+        if (socketID.trim() === '') {
+            throw new Error('Socket ID empty. Please pass through a socket ID.');
+        }
+
+        ((channelNameInner, socketIDInner, callbackInner) => {
+            this._doHTTPRequest('GET', this.apiEndpoint + "/channels/auth?channel=" + encodeURIComponent(channelNameInner) +
+                "&socketID=" + encodeURIComponent(socketIDInner), {}, (err, response) => {
+                if (err || response.status !== 200) {
+                    return callbackInner(err, 'There was a problem receiving a channel authentication token. Server returned: ' + err.response.body);
                 }
 
-                if (response.status === 200) {
-                    return callbackInner(null, JSON.parse(response.body));
-                } else {
-                    return callbackInner(err, JSON.parse(err.response.body));
-                }
+                return callbackInner(null, JSON.parse(response.body));
             });
-        })(channelName, callback);
+        })(channelName, socketID, callback);
     }
 
-    this.broadcast = (channelName, data, callback) => {
+    this.broadcast = (channelName, data, callback = undefined) => {
+        if (typeof channelName !== 'string') {
+            throw new Error('Channel name must be a string.');
+        }
+
         if (channelName.trim() === '') {
             throw new Error('Channel name empty. Please provide a channel name.');
         }
@@ -61,20 +74,22 @@ function PushRadar(secretKey) {
 
         ((channelNameInner, dataInner, callbackInner) => {
             this._doHTTPRequest('POST', this.apiEndpoint + "/broadcasts", {
-                channel: channelNameInner.trim(),
-                data: dataInner
+                channel: channelNameInner,
+                data: JSON.stringify(dataInner)
             }, (err, response) => {
-                if (err) {
-                    return callbackInner(err, JSON.parse(err.response.body));
-                }
+                if (typeof callbackInner !== 'undefined') {
+                    if (err || response.status !== 200) {
+                        return callbackInner(err, 'An error occurred while calling the API. Server returned: ' + err.response.body);
+                    }
 
-                if (response.status === 200) {
-                    return callbackInner(null, JSON.parse(response.body));
-                } else {
-                    return callbackInner(err, JSON.parse(err.response.body));
+                    return callbackInner(null, true);
                 }
             });
         })(channelName, data, callback);
+    }
+
+    if (typeof secretKey !== 'string') {
+        throw new Error("Secret key must be a string.");
     }
 
     if (!secretKey || !/^sk_/.test(secretKey)) {

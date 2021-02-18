@@ -1,4 +1,10 @@
 <p align="center"><a href="https://pushradar.com" target="_blank"><img src="https://pushradar.com/images/logo/pushradar-logo-dark.svg" width="300"></a></p>
+
+<p align="center">
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/v/pushradar?cacheSeconds=60&color=5b86e5"></a> 
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/dt/pushradar?cacheSeconds=60&color=5b86e5"></a>
+    <a href="https://www.npmjs.com/package/pushradar"><img src="https://img.shields.io/npm/l/pushradar?cacheSeconds=60&color=5b86e5"></a>
+</p>
 <br />
 
 ## PushRadar Node.js Server Library
@@ -19,7 +25,7 @@ In order to use this library, please ensure that you have the following:
 The easiest way to get up and running is to install the library using the npm dependency manager. Run the following command in your console:
 
 ```bash
-npm install pushradar@">=3.0.0 <4.0.0" --save
+$ npm install pushradar --save
 ```
 
 ## Broadcasting Messages
@@ -48,8 +54,11 @@ Private channels require authentication and start with the prefix **private-**. 
 You will need to set up an authentication endpoint that returns a token using the `auth(...)` method if the user is allowed to subscribe to the channel. For example:
 
 ```javascript
+const radar = require("pushradar")("your-secret-key");
+const channelName = request.query.channelName;
+const socketID = request.query.socketID;
 if (/* is user allowed to access channel? */ true) {
-    radar.auth(channelName, (err, authResponse) => {
+    radar.auth(channelName, socketID, (err, authResponse) => {
         if (!err) {
             response.send({token: authResponse.token});
         } else {
@@ -71,5 +80,5 @@ Complete documentation for PushRadar's Node.js server library can be found at: <
 
 ## License
 
-Copyright 2021, PushRadar. PushRadar's Node.js server library is licensed under the MIT license:
-http://www.opensource.org/licenses/mit-license.php
+Copyright © 2021, PushRadar. PushRadar's Node.js server library is licensed under the MIT license:
+<https://opensource.org/licenses/mit-license.php>
