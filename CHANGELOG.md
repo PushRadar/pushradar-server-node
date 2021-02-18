@@ -1,3 +1,7 @@
+## 3.0.0 (2021-02-18)
+
+[NEW] Updated for release of PushRadar v3
+
 ## 3.0.0-alpha.3 (2021-02-17)
 
 [FIXED] Fixed problem regarding incorrect types of data
