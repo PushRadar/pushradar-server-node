@@ -1,6 +1,6 @@
 {
   "name": "pushradar",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "PushRadar's official Node.js server library.",
   "main": "index.js",
   "repository": {
