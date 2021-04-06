@@ -1,7 +1,7 @@
 const got = require('got');
 
 function PushRadar(secretKey) {
-    this.version = '3.0.0';
+    this.version = '3.1.0';
     this.apiEndpoint = 'https://api.pushradar.com/v3';
 
     this._validateChannelName = (channelName) => {
@@ -37,8 +37,8 @@ function PushRadar(secretKey) {
             throw new Error('Channel name empty. Please provide a channel name.');
         }
 
-        if (channelName.lastIndexOf('private-', 0) !== 0) {
-            throw new Error('Channel authentication can only be used with private channels.');
+        if (!(channelName.lastIndexOf('private-', 0) === 0 || channelName.lastIndexOf('presence-', 0) === 0)) {
+            throw new Error('Channel authentication can only be used with private and presence channels.');
         }
 
         if (typeof socketID !== 'string') {
@@ -86,6 +86,24 @@ function PushRadar(secretKey) {
                 }
             });
         })(channelName, data, callback);
+    }
+
+    this.registerClientData = (socketID, clientData) => {
+        if (typeof socketID !== 'string') {
+            throw new Error('Socket ID must be a string.');
+        }
+
+        if (socketID.trim() === '') {
+            throw new Error('Socket ID empty. Please pass through a socket ID.');
+        }
+
+        ((socketIDInner, clientDataInner) => {
+            this._doHTTPRequest('POST', this.apiEndpoint + "/client-data", {
+                socketID: socketIDInner,
+                clientData: JSON.stringify(clientDataInner)
+            }, (err, response) => {
+            });
+        })(socketID, clientData);
     }
 
     if (typeof secretKey !== 'string') {
